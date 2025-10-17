@@ -38,4 +38,18 @@ class Board {
         System.out.print("+");
         System.out.println();
     }
+
+    boolean setChar(int x, int y, char token) {
+        if (x < 0 || y < 0 || x >= size || y >= size) {
+            return false;
+        }
+        List<Character> row = board.get(x);
+        row.set(y, token);
+        return true;
+    }
+
+    char checkWin() {
+        //this is gonna be painfully fun to implement
+        return '?';
+    }
 }
