@@ -26,9 +26,35 @@ class Game {
         size = sc.nextInt();
         Board b = new Board(size);
 
+        /*
         for (Player p : players) {
             System.out.println(p.name + "--" + p.token);
         }
         b.printBoard();
+        */
+
+        boolean result = false;
+        int turn = 0;
+        int preturn = n-1;
+
+        while(!b.isFull() && !(result=b.checkWin(players.get(preturn).token))) {
+            b.printBoard();
+            System.out.println(players.get(turn).name+"'s Turn {"+players.get(turn).token+"}");
+            System.out.println("Enter a Position to place token: ");
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            if(b.setChar(x,y,players.get(turn).token)){
+                preturn = turn;
+                turn = (turn+1)%n;
+            } else {
+                System.out.println("Invalid Position! Try Again!");
+            }
+        } 
+        if(result){
+            
+            System.out.println(players.get(preturn).name + "is the Winner!");
+        } else {
+            System.out.println("TIE");
+        }
     }
 }
