@@ -52,7 +52,7 @@ class Game {
         } 
         if(result){
             
-            System.out.println(players.get(preturn).name + "is the Winner!");
+            System.out.println(players.get(preturn).name + " is the Winner!");
         } else {
             System.out.println("TIE");
         }
